@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sierra Alto Espresso – Beispielseite</title>
+  <meta name="description" content="Beispiel-Website zur Bewerbung einer Kaffeebohne: Sierra Alto Espresso – kräftig, schokoladig, nachhaltig." />
+  <style>
+    :root{
+      --bg: #0f0f10;
+      --card: #16171a;
+      --text: #e9e9ee;
+      --muted: #a6a6b0;
+      --brand: #b37a4c;      /* kaffeebraun */
+      --brand-2: #5e3c22;    /* dunkleres braun */
+      --accent: #efb064;     /* karamell */
+      --ok: #7fd1ae;         /* grün */
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background: radial-gradient(1000px 600px at 90% -10%, #2b1b12 0%, var(--bg) 40%), var(--bg);
+      color:var(--text); font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+    }
+    a{color:inherit; text-decoration:none}
+    .container{max-width:1100px; margin-inline:auto; padding: 24px;}
+
+    /* Header */
+    header{position:sticky; top:0; z-index:10; backdrop-filter:saturate(140%) blur(8px); background: rgba(15,15,16,.6); border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:700}
+    .bean{width:28px; height:28px; display:inline-grid; place-items:center; border-radius:50%; background:linear-gradient(145deg,var(--brand),var(--brand-2)); box-shadow:inset 0 0 0 2px rgba(255,255,255,.08)}
+    .nav a.cta{padding:10px 16px; border-radius:999px; background:linear-gradient(180deg,var(--accent), #d28a31); color:#1a120c; font-weight:700; box-shadow:0 6px 18px rgba(239,176,100,.3)}
+
+    /* Hero */
+    .hero{display:grid; grid-template-columns:1.2fr .8fr; gap:28px; align-items:center; padding: 48px 0}
+    .tag{display:inline-flex; gap:8px; align-items:center; font-size:13px; color:var(--muted); padding:6px 10px; border:1px solid rgba(255,255,255,.08); border-radius:999px;}
+    .title{font-size: clamp(32px, 4.2vw, 56px); line-height:1.05; margin:14px 0 10px; letter-spacing:-.02em}
+    .subtitle{color:#d9d9df; font-size: clamp(16px, 1.5vw, 18px)}
+    .hero-actions{display:flex; gap:14px; margin-top:22px}
+    .btn{padding:12px 18px; border-radius:14px; border:1px solid rgba(255,255,255,.08); background: #1a1b1f; color:#fff; font-weight:600}
+    .btn.primary{background:linear-gradient(180deg, var(--brand) 0%, var(--brand-2) 100%); border: none}
+    .stats{display:flex; gap:22px; margin-top:20px; color:var(--muted)}
+    .stats b{color:var(--text)}
+
+    .hero-visual{position:relative; height:100%;}
+    .pack{position:relative; isolation:isolate;}
+    .pack::before{
+      content:""; position:absolute; inset:-18px; background: radial-gradient(400px 120px at 30% 0%, rgba(239,176,100,.25) 0%, rgba(0,0,0,0) 60%);
+      filter: blur(30px); z-index:-1;
+    }
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); box-shadow:var(--shadow)}
+
+    /* Sections */
+    .grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:18px}
+    .feature{padding:18px}
+    .feature h3{margin:6px 0 6px}
+    .feature p{color:var(--muted); margin:0}
+
+    .product{display:grid; grid-template-columns: 1fr 1fr; gap:18px; padding:22px}
+    .product .info h3{margin:0 0 6px}
+    .pill{display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; background:#1b1c20; border:1px solid rgba(255,255,255,.08); color:#cfcfd6; font-size:13px}
+
+    .notes{display:flex; flex-wrap:wrap; gap:8px; margin-top:8px}
+    .note{padding:6px 10px; border-radius:999px; background:#1a1b1f; border:1px solid rgba(255,255,255,.08)}
+
+    .testimonial{padding:20px; display:flex; gap:14px}
+    .avatar{width:44px; height:44px; border-radius:50%; background:linear-gradient(145deg,#caa480,#6a442c); display:grid; place-items:center; font-weight:700}
+
+    .footer{display:grid; grid-template-columns:2fr 1fr; gap:18px; margin-top:26px; padding:18px}
+    .input{display:flex; gap:8px}
+    .input input{flex:1; padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.1); background:#121316; color:#fff}
+    .input button{padding:12px 16px; border-radius:12px; background:linear-gradient(180deg, var(--accent), #d28a31); color:#1a120c; font-weight:700; border:0}
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr;}
+      .grid{grid-template-columns:1fr}
+      .product{grid-template-columns:1fr}
+      header .nav{gap:10px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#">
+        <span class="bean" aria-hidden="true">☕️</span>
+        Sierra Alto
+      </a>
+      <nav style="display:flex; gap:16px; align-items:center;">
+        <a href="#herkunft">Herkunft</a>
+        <a href="#noten">Aromen</a>
+        <a href="#brewing">Zubereitung</a>
+        <a class="cta" href="#kaufen">Jetzt probieren</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <span class="tag">Neu · Limitierte Röstung</span>
+        <h1 class="title">Sierra Alto Espresso</h1>
+        <p class="subtitle">Kräftiger, schokoladiger Espresso mit Noten von Haselnuss & Karamell. 
+          100% Arabica aus familiengeführten Farmen – schonend trommelgeröstet in Kleinchargen.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#kaufen">Beutel in den Warenkorb</a>
+          <a class="btn" href="#herkunft">Mehr erfahren</a>
+        </div>
+        <div class="stats">
+          <div><b>86+</b> SCA Punkte</div>
+          <div><b>2000 m</b> Anbauhöhe</div>
+          <div><b>Handgepflückt</b> & direkt gehandelt</div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="pack card" style="padding:22px; display:grid; grid-template-columns:120px 1fr; gap:16px; align-items:center;">
+          <!-- Simple SVG "Beutel" Illustration -->
+          <svg width="120" height="160" viewBox="0 0 120 160" role="img" aria-label="Kaffeebeutel Illustration" style="filter: drop-shadow(0 12px 20px rgba(0,0,0,.35))">
+            <defs>
+              <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0%" stop-color="#b37a4c"/>
+                <stop offset="100%" stop-color="#5e3c22"/>
+              </linearGradient>
+            </defs>
+            <rect x="14" y="8" rx="12" ry="12" width="92" height="144" fill="url(#g1)" stroke="#000" opacity=".8"/>
+            <rect x="22" y="40" width="76" height="60" rx="10" fill="rgba(255,255,255,.15)"/>
+            <circle cx="60" cy="70" r="18" fill="#1f1410"/>
+            <path d="M60 56c4 0 10 6 10 14s-6 14-10 14-10-6-10-14 6-14 10-14z" fill="#7a4a2d"/>
+          </svg>
+          <div>
+            <h2 style="margin:0">Schoko · Nuss · Karamell</h2>
+            <p style="margin:6px 0; color:var(--muted)">Dunkle Schokolade, geröstete Haselnuss, cremiger Karamell – mit samtigem Körper.</p>
+            <div class="notes">
+              <span class="note">Espresso & Milchgetränke</span>
+              <span class="note">Vollautomat geeignet</span>
+              <span class="note">Filter kräftig</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="grid" id="herkunft">
+      <article class="feature card">
+        <h3>Nachhaltige Herkunft</h3>
+        <p>Direkter Handel mit Kooperativen in den Bergen von Huehuetenango. Faire Preise, langfristige Partnerschaften.</p>
+      </article>
+      <article class="feature card">
+        <h3>Frisch geröstet</h3>
+        <p>Kleinchargen, schonend bei niedriger Temperatur in der Trommel – für maximale Süße und wenig Bitterkeit.</p>
+      </article>
+      <article class="feature card">
+        <h3>Transparenz</h3>
+        <p>Ernte: 2025 · Varietät: Bourbon/Caturra · Aufbereitung: Washed · Feuchtigkeit: 10,5%</p>
+      </article>
+    </section>
+
+    <!-- Produktkarte -->
+    <section id="kaufen" class="product card" style="margin-top:22px">
+      <div class="info">
+        <h3>Sierra Alto Espresso – 250 g</h3>
+        <div class="pill" title="Röstgrad">Röstgrad: Mittel-Dunkel</div>
+        <div class="notes">
+          <span class="note">Geeignet für: Siebträger, Herdkanne, Vollautomat</span>
+          <span class="note">Empfohlene Brühtemperatur: 93–94°C</span>
+        </div>
+        <p style="color:var(--muted); margin-top:10px">Unser Signature-Blend für kräftigen Espresso mit natürlicher Süße. Perfekt als Cappuccino und Flat White.</p>
+        <div style="display:flex; gap:10px; align-items:center; margin-top:12px">
+          <strong style="font-size:24px">€9,90</strong>
+          <span style="color:var(--muted)">/ 250 g Beutel</span>
+        </div>
+        <div style="display:flex; gap:12px; margin-top:12px">
+          <button class="btn primary" style="cursor:pointer">In den Warenkorb</button>
+          <button class="btn" style="cursor:pointer">Aroma-Set testen</button>
+        </div>
+      </div>
+      <div>
+        <div class="card" style="padding:14px">
+          <h4 style="margin:0 0 8px">Brührezept (Siebträger)</h4>
+          <ul style="margin:0; padding-left:18px; color:var(--muted)">
+            <li>18 g in · 36 g out · 27–30 s</li>
+            <li>Mahlgrad: fein, leicht klumpend</li>
+            <li>Preinfusion 3–5 s</li>
+          </ul>
+          <div class="pill" style="margin-top:12px"><span aria-hidden="true">✅</span> Einsteigerfreundlich</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section style="margin-top:22px" id="noten" class="grid">
+      <div class="testimonial card">
+        <div class="avatar" aria-hidden="true">A</div>
+        <div>
+          <p style="margin:0">„Cremig und schokoladig – genau mein Cappuccino! Wird wieder bestellt.“</p>
+          <small style="color:var(--muted)">Anna K.</small>
+        </div>
+      </div>
+      <div class="testimonial card">
+        <div class="avatar" aria-hidden="true">M</div>
+        <div>
+          <p style="margin:0">„Im Vollautomaten überraschend rund. Keine Bitterkeit, top Mundgefühl.“</p>
+          <small style="color:var(--muted)">Marc T.</small>
+        </div>
+      </div>
+      <div class="testimonial card">
+        <div class="avatar" aria-hidden="true">L</div>
+        <div>
+          <p style="margin:0">„Als Espresso pur: nussig, süß, sehr ausgewogen. Klare Empfehlung.“</p>
+          <small style="color:var(--muted)">Lea S.</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- Brewing Tips -->
+    <section id="brewing" class="card" style="margin-top:22px; padding:22px">
+      <h3 style="margin:0 0 8px">Tipps für die perfekte Tasse</h3>
+      <div class="grid" style="grid-template-columns: repeat(3, 1fr); gap:14px">
+        <div>
+          <h4 style="margin:0 0 6px">Wasser</h4>
+          <p style="color:var(--muted); margin:0">Ideal: 70–120 ppm Gesamthärte. Zu hartes Wasser dämpft Süße & Aromen.</p>
+        </div>
+        <div>
+          <h4 style="margin:0 0 6px">Lagerung</h4>
+          <p style="color:var(--muted); margin:0">Luftdicht, kühl & dunkel lagern. Nach dem Öffnen innerhalb von 6 Wochen genießen.</p>
+        </div>
+        <div>
+          <h4 style="margin:0 0 6px">Mahlgrad</h4>
+          <p style="color:var(--muted); margin:0">Für Espresso feiner, für Filter mittel–grob – in kleinen Schritten anpassen.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer card" style="margin-bottom:28px">
+      <div>
+        <h4 style="margin:0 0 8px">Bleib in Kontakt</h4>
+        <p style="color:var(--muted); margin-top:0">Aktionen, neue Röstungen & Tipps direkt in dein Postfach.</p>
+        <form class="input" onsubmit="event.preventDefault(); alert('Danke! Du bist auf der Liste.');">
+          <label class="sr-only" for="email">E-Mail</label>
+          <input id="email" name="email" type="email" placeholder="dein@email.de" required />
+          <button type="submit">Anmelden</button>
+        </form>
+      </div>
+      <div style="color:var(--muted)">
+        <p style="margin:0">© <span id="y"></span> Sierra Alto. Alle Rechte vorbehalten.</p>
+        <p style="margin:6px 0 0">Impressum · Datenschutz · Versand</p>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Kleines Detail: Aktuelles Jahr einsetzen
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
